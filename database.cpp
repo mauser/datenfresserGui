@@ -22,7 +22,7 @@ database::database()
 
 QList<logEntry> database::getLogEntries( int dataID )
 {
-    QString sql = "SELECT logID, type, dataID, start_timestamp, end_timestamp, status, err_msg, transferredData FROM log WHERE dataID=" + QString::number( dataID ) + " ORDER BY start_timestamp desc";
+    QString sql = "SELECT logID, type, dataID, start_timestamp, end_timestamp, status, err_msg, transferredData FROM log WHERE type = 'rsync' AND dataID=" + QString::number( dataID ) + " ORDER BY start_timestamp desc";
     QSqlQuery query(sql, db);
 
     QList<logEntry> list;
