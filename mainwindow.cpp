@@ -153,6 +153,7 @@ void MainWindow::updateGuiElements()
     }
 
     ui->currentJob->setText( db->getRunningJob() );
+
 }
 
 void MainWindow::startStopButtonClicked()

@@ -105,11 +105,11 @@ dataContainer database::getDataContainer( int ID )
 QString database::getRunningJob()
 {
 
-    QString sql = "SELECT log.logID , log.start_timestamp , dataContainer.name FROM log,dataContainer WHERE log.status='running' AND log.dataID = dataContainer.dataID ";
+    QString sql = "SELECT log.logID , log.start_timestamp, dataContainer.name FROM log,dataContainer WHERE log.status='running' AND log.dataID = dataContainer.dataID ";
     QSqlQuery query(sql, db);
     while ( query.next() ) {
-	QString id = query.value( 0 ).toString();
-	return id;
+	QString name = query.value( 2 ).toString();
+	return name;
     }
     return QString("No Job running");
 }
