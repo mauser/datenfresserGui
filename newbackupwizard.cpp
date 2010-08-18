@@ -1,6 +1,6 @@
 #include "newbackupwizard.h"
 
-#include <QVboxLayout>
+#include <QVBoxLayout>
 #include <QGridLayout>
 
  NewBackupWizard::NewBackupWizard(QWidget *parent) : QWizard(parent)
