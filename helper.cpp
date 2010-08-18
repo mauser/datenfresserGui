@@ -36,6 +36,7 @@ QString helper::getServerStatus()
 
 void helper::startJob( int id )
 {
+     qDebug() << "trying to start job";
      QFile file( "/var/lib/datenfresser/immediate" );
      if ( file.open( QIODevice::Append | QIODevice::Text )){
 	QTextStream out( &file );

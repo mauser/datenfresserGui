@@ -171,7 +171,7 @@ void MainWindow::startStopButtonClicked()
 void MainWindow::startServer(  )
 {
 	QProcess *startDatenfresser = new QProcess( this );
-	startDatenfresser->start( "/Users/sebastian/src/datenfresser/datenfresser.py" );
+        startDatenfresser->start( "/usr/sbin/datenfresser" );
 	startDatenfresser->waitForStarted();
 }
 
