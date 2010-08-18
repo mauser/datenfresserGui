@@ -2,6 +2,7 @@
 
 #include <QVBoxLayout>
 #include <QGridLayout>
+#include "database.h"
 
  NewBackupWizard::NewBackupWizard(QWidget *parent) : QWizard(parent)
  {
@@ -23,16 +24,26 @@
 
   void NewBackupWizard::accept()
  {
-      /*
-     QByteArray className = field("className").toByteArray();
-     QByteArray baseClass = field("baseClass").toByteArray();
-     QByteArray macroName = field("macroName").toByteArray();
-     QByteArray baseInclude = field("baseInclude").toByteArray();
 
-     QString outputDir = field("outputDir").toString();
-     QString header = field("header").toString();
-     QString implementation = field("implementation").toString();
-    */
+     QString remoteLocation = field("remoteLocation").toString();
+     QString name = field("name").toString();
+
+     database* d = database::getInstance();
+     dataContainer* data = new dataContainer();
+
+     data->setArchiveSchedule( "weekly" );
+     data->setSchedule( "weekly" );
+     data->setName( name );
+     data->setArchiveMethod( "hardlinks" );
+     data->setOptions("" );
+     data->setComment( "" );
+     data->setRemoteLocation( remoteLocation );
+     data->setLocalPath( name );
+
+
+     d->addEntry( data );
+
+     qDebug() << "He has pressed accept!!!!" << remoteLocation << name;
      QDialog::accept();
  }
 
@@ -92,5 +103,9 @@
      /*QVBoxLayout *layout = new QVBoxLayout;
      layout->addWidget(label);
 	setLayout(layout);*/
+
+     registerField("name", nameEdit);
+     registerField("remoteLocation", remoteLocationEdit);
+
  }
 

@@ -16,6 +16,8 @@ private:
     QSqlDatabase db;
 public:
     database();
+    ~database();
+
     QString getRunningJob();
     QString getLastJob();
 
@@ -25,6 +27,17 @@ public:
     QList<logEntry> getLogEntries( int dataId );
     logEntry getLogEntry( int logID );
 
+    void addEntry( dataContainer* );
+
+    static database* instance;
+
+    static database* getInstance()
+    {
+        if( instance == NULL ){
+            instance = new database();
+        }
+        return instance;
+    }
 };
 
 #endif // DATABASE_H

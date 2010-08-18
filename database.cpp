@@ -7,6 +7,7 @@
 
 #include <iostream>
 
+database* database::instance = NULL;
 
 database::database()
 {
@@ -18,7 +19,38 @@ database::database()
     }
 }
 
+database::~database()
+{
+    db.close();
+    qDebug() << "closing db";
+}
 
+
+
+
+void database::addEntry( dataContainer* c ){
+
+    QSqlQuery query;
+
+    query.prepare( "INSERT INTO datacontainer(name,comment,localPath,remotePath,type,options,schedule,archive,archive_method) VALUES (:name,:comment,:local,:remote,'rsync',:options,:schedule,:archive_schedule,:archive_method)");
+
+    query.bindValue( ":name",c->getName() );
+    query.bindValue( ":local",c->getLocalPath() );
+    query.bindValue(":comment" , c->getComment() );
+    query.bindValue(":remote", c->getRemoteLocation() );
+    query.bindValue(":options", c->getOptions() );
+    query.bindValue(":schedule", c->getSchedule() );
+    query.bindValue(":archive_schedule", c->getArchiveSchedule() );
+    query.bindValue(":archive_method", c->getArchiveMethod() );
+
+    if(!query.exec())
+    {
+        qDebug() << "> Query exec() error." << query.lastError();
+    } else {
+        qDebug() << ">Query exec() success.";
+    }
+
+}
 
 QList<logEntry> database::getLogEntries( int dataID )
 {
@@ -112,11 +144,13 @@ QString database::getRunningJob()
 	return name;
     }
     return QString("No Job running");
+
 }
 
 
 
  QString database::getLastJob(){
+
     QString sql="SELECT logID from log where type='rsync' ORDER BY start_timestamp DESC LIMIT 1";
     QSqlQuery query(sql, db);
     while ( query.next() ) {

@@ -264,9 +264,16 @@
      <x>0</x>
      <y>0</y>
      <width>626</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMain">
+    <property name="title">
+     <string>Main</string>
+    </property>
+    <addaction name="actionAdd_new_job"/>
+   </widget>
+   <addaction name="menuMain"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -277,6 +284,11 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAdd_new_job">
+   <property name="text">
+    <string>Add new job</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

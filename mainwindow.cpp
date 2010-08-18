@@ -14,7 +14,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    db = new database();
+    db = database::getInstance();
 
     ui->setupUi(this);
     ui->statusLabel->setText( helper::getServerStatus() );
@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete database::getInstance();
     delete ui;
 }
 

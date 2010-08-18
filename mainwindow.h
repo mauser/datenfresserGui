@@ -38,7 +38,7 @@ private:
     void setupTrayIcon();
     void setupDataTreeWidget();
 
-private slots:
+public slots:
     void startJobButtonClicked();
     void startStopButtonClicked();
     void updateGuiElements();

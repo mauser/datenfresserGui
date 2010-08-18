@@ -7,7 +7,6 @@ class dataContainer
 {
     public:
 
-
 	QString getName(){
 	    return name;
 	}
@@ -36,6 +35,9 @@ class dataContainer
 	    return location;
 	}
 
+        QString getComment(){
+            return comment;
+        }
 
 
 	void setName( QString Name){
@@ -50,16 +52,65 @@ class dataContainer
 	    location = Location;
 	}
 
+        void setComment( QString Comment){
+            comment = Comment;
+        }
+
+
+        void setArchiveMethod( QString method){
+            archiveMethod = method;
+        }
+
+        void setArchiveSchedule( QString schedule ){
+            archiveSchedule = schedule;
+        }
+
+        void setSchedule( QString schedule ){
+            this->schedule = schedule;
+        }
+
+        void setOptions( QString options){
+            this->options = options;
+        }
+
+        QString getOptions(){
+            return this->options;
+        }
+
+        QString getArchiveSchedule(){
+            return this->archiveSchedule;
+        }
+
+        QString getSchedule(){
+            return this->schedule;
+        }
+
+        QString getArchiveMethod(){
+            return this->archiveMethod;
+        }
+
+        QString getLocalPath(){
+            return this->localPath;
+        }
+
+        void setLocalPath(QString path){
+            this->localPath = path;
+        }
 
     private:
 	int dataId;
 	int lastJobId;
 
 	QString name;
+        QString comment;
 	QString remoteLocation;
-	QString location;
+        QString localPath;
 	QString	archiveMethod;
 	QString archiveSchedule;
+        QString schedule;
+        QString options;
+        QString location;
+
 };
 
 class logEntry
