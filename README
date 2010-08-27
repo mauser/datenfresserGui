@@ -1,2 +1,4 @@
-This a gui for the datenfresser backup daemon. At the moment
-it is only possible to view the backup history.
+This is a gui for the datenfresser backup daemon. At the moment
+it is possible to view the backup history and add new backups.
+Visit http://github.com/mauser/datenfresserGui for the most
+recent version of datenfresserGui.
