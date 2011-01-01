@@ -41,6 +41,8 @@ void helper::startJob( int id )
      if ( file.open( QIODevice::Append | QIODevice::Text )){
 	QTextStream out( &file );
 	out << QString::number( id  ) << "\n";
+    } else {
+        qDebug()  << "writing to /var/lib/datenfresser/immediate failed";
     }
 }
 
