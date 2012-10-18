@@ -107,7 +107,7 @@ void MainWindow::setupTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu( trayIconMenu  );
 
-    trayIcon->setIcon( QIcon("datenfresserGui.app/Contents/Resources/bad.svg") );
+    trayIcon->setIcon( QIcon("hdd.png") );
     trayIcon->show();
 }
 
